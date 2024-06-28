@@ -84,6 +84,7 @@ let expression = "";
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
+        disable();
         const value = button.textContent.trim();
         if (value === 'AC') {
             enable();
