@@ -19,6 +19,7 @@ let disable = ()=>{
 let copyResult = ()=>{
     let v = output.value ;
     input.value = v.replace("=","") ;
+    expression = input.value ;
     enable();
 }
 let setOut = (v)=>{
