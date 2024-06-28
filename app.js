@@ -41,6 +41,7 @@ const allowedCharacters = [
     '+', '-', '*', '/', '%', '(', ')', '.' ,'x','X','='       // Mathematical operators
 ];
 let calculate = (v)=>{
+    message = document.querySelector(".msg") ;
     let op = "+-/*%";
     lastChar = v.slice(-1);
     message.innerHTML = lastChar + " " + v ;
@@ -85,7 +86,8 @@ let expression = "";
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         disable();
-        const value = button.textContent.trim();
+        let value = button.textContent.trim();
+        if(value === 'X') value = '*';
         if (value === 'AC') {
             enable();
             expression = "";
@@ -94,10 +96,12 @@ buttons.forEach(button => {
         } else if (value === 'DEL') {
             expression = expression.slice(0, -1);
             input.value = expression;
-        } else {
+        }
+        else {
             expression += value;
             input.value = expression;
         }
         calculate(expression);
+        expression = expression.replace('=',"");
     });
 });
